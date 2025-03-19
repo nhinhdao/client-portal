@@ -9,6 +9,6 @@ class Provider < ApplicationRecord
   # Provider has many Clients through enrollments
   has_many :clients, through: :enrollments
 
-  # Provider has many journal entries through clients, alias patients_journals
-  has_many :patients_journals, through: :clients, source: :journal_entries
+  # Provider has many journal entries through clients, Indirect many to many association
+  has_many :journal_entries, through: :clients
 end
