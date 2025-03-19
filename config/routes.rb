@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # api/v1/dietitians
-      resources :dietitians, only: [ :show ] do
+      resources :dietitians, only: [ :index, :show ] do
         member do
           # api/v1/dietitians/<provider_id>/patients
           get "patients", to: "dietitians#patients"
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
 
       # api/v1/patients
-      resources :patients, only: [ :show ] do
+      resources :patients, only: [ :index, :show ] do
         member do
           # api/v1/patients/:client_id/providers
           get "dietitians" => "patients#dietitians"

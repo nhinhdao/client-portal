@@ -1,7 +1,13 @@
 class Api::V1::ProvidersController < ApplicationController
   # get provider by id, set it to instance variable
   # applies each time clients and clients_journals are executed
-  before_action :set_provider, except: :create
+  before_action :set_provider, except: [ :create, :index ]
+
+  # get all providers
+  def index
+    @provider = Provider.all
+    render json: @provider
+  end
 
   # create new Provider
   def create

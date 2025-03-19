@@ -4,7 +4,6 @@ class Api::V1::DietitiansController < Api::V1::ProvidersController
     render json: @provider.clients.where(type: "Patient")
   end
 
-
   # all journal entries of all clients of a provider
   # result is sorted by date posted
   def patients_journals

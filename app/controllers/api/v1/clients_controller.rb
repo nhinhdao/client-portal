@@ -1,7 +1,13 @@
 class Api::V1::ClientsController < ApplicationController
   # get client by id and set it to class instance variable
   # applies each time providers and journal_entried are executed
-  before_action :set_client, except: :create
+  before_action :set_client, except: [ :create, :index ]
+
+  # get all providers
+  def index
+    @client = Client.all
+    render json: @client
+  end
 
   # create new client
   def create
